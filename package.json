@@ -13,7 +13,11 @@
     "prepare": "husky install && husky add .husky/pre-commit 'npm run pre-commit'"
   },
   "dependencies": {
+    "@amap/amap-jsapi-loader": "^1.0.1",
+    "@amap/amap-jsapi-types": "^0.0.10",
     "@antv/data-set": "^0.11.8",
+    "@antv/l7": "^2.10.1",
+    "@antv/l7-maps": "^2.10.1",
     "@arco-design/color": "^0.4.0",
     "@arco-design/web-react": "^2.32.2",
     "@arco-themes/react-arco-pro": "^0.0.7",
@@ -24,6 +28,7 @@
     "bizcharts": "^4.1.11",
     "classnames": "^2.3.1",
     "copy-to-clipboard": "^3.3.1",
+    "echarts": "^5.4.0",
     "lodash": "^4.17.21",
     "mockjs": "^1.1.0",
     "nprogress": "^0.2.0",
