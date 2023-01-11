@@ -157,6 +157,7 @@ export const Layout = () => {
       {/* <div className="chart-card">
         <ChartCard />
       </div> */}
+      <div>test</div>
       <Header />
       <Menu />
       <div id="map"></div>
