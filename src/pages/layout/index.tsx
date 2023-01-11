@@ -9,9 +9,7 @@ import dingbian from '@/assets/定边县.json';
 import { Header } from '@/components/Header';
 import Menu from '@/components/Menu';
 import './index.less';
-import { useHistory } from 'react-router-dom';
 export const Layout = () => {
-  const history = useHistory();
 
   // 【使用script加载】
   // const [AMap] = useState<any>(window.AMap);
