@@ -58,7 +58,7 @@ export const Layout = () => {
 
   // 初始化map
   useEffect(() => {
-    if (!map) return;
+    if (!map|| typeof AMap.Scale !=='function') return;
     map.addControl(new AMap.Scale());
     map.setCenter([107.601284, 37.59523]); //定边县中心
     map.add(
@@ -159,16 +159,6 @@ export const Layout = () => {
       {/* <div className="chart-card">
         <ChartCard />
       </div> */}
-      <h1
-        onClick={() => {
-          history.push({
-            pathname: '/',
-            search: '?id=3',
-          });
-        }}
-      >
-        aaa
-      </h1>
       <Header />
       <Menu />
       <div id="map"></div>
