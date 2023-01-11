@@ -54,7 +54,6 @@ export const Layout = () => {
     AMap && setMap(new AMap.Map('map-container', mapOptions));
   }, [AMap]);
 
-  // 初始化map
   useEffect(() => {
     if (!map|| typeof AMap.Scale !=='function') return;
     map.addControl(new AMap.Scale());
