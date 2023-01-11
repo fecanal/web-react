@@ -9,8 +9,10 @@ import dingbian from '@/assets/定边县.json';
 import { Header } from '@/components/Header';
 import Menu from '@/components/Menu';
 import './index.less';
-
+import { useHistory } from 'react-router-dom';
 export const Layout = () => {
+  const history = useHistory();
+
   // 【使用script加载】
   // const [AMap] = useState<any>(window.AMap);
   const [AMap, setAMap] = useState<any>();
@@ -152,12 +154,21 @@ export const Layout = () => {
     // const dat = new Loca.Dat();
     // dat.addLayer(breathRed, '红色');
   }, [map, AMap]);
-
   return (
     <div className="layout">
       {/* <div className="chart-card">
         <ChartCard />
       </div> */}
+      <h1
+        onClick={() => {
+          history.push({
+            pathname: '/',
+            search: '?id=3',
+          });
+        }}
+      >
+        aaa
+      </h1>
       <Header />
       <Menu />
       <div id="map"></div>
