@@ -49,7 +49,7 @@ export const Layout = () => {
       });
   }, []);
   useEffect(() => {
-    // 【使用script加载】~
+    // 【使用script加载】~~
     // setMap(new window.AMap.Map('map-container', mapOptions))
     AMap && setMap(new AMap.Map('map-container', mapOptions));
   }, [AMap]);
