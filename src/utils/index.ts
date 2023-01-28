@@ -16,3 +16,19 @@ export const formatMapText = (mapJson: any) => {
     return { name, position: [altitude, longitude] };
   });
 };
+export interface TPolygon {
+  metaData: [];
+  data: any;
+}
+export const formatJsonToPolygon = (mapJson: any): TPolygon => {
+  const { features = [] } = mapJson;
+  const metaData = features.map((feat) => ({
+    name: feat.name,
+    properties: { ...feat },
+  }));
+  const data = [...features.map((feat) => [...feat.geometry.coordinates])];
+  return {
+    metaData,
+    data,
+  };
+};

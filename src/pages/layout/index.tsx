@@ -10,6 +10,8 @@ import { useTextMarker } from '../hooks/useTextMarker';
 import { useDingbian } from '../hooks/useDingbian';
 import { useControl } from '../hooks/useControl';
 import { ChartCard } from '@/components/ChartCard';
+import { useClickMenu } from '../hooks/useClickMenu';
+import { usePolygon } from '../hooks/usePolygon';
 export const Layout = () => {
   // 【使用script加载】
   // const [AMap] = useState<any>(window.AMap);
@@ -18,15 +20,21 @@ export const Layout = () => {
   const [map, setMap] = useState<AMap.Map>();
 
   // 地图配置项
-  const [mapOptions, setmapOptions] = useState<any>({
-    zoom: 10,
+  const [mapOptions, setMapOptions] = useState<any>({
+    zoom: 8.5,
     layers: [],
     viewMode: '3D',
     mapStyle: 'amap://styles/dark',
   });
+  // 定边县marker
   useTextMarker(map, AMap);
-  useDingbian(map, AMap);
+  // 定边县json
+  // useDingbian(map, AMap);
+  // 地图侧边工具栏
   useControl(map, AMap);
+  // 自定义鼠标右键
+  // useClickMenu(map,AMap);
+  usePolygon(map, AMap);
   useEffect(() => {
     AMapLoader.load({
       key: '15fbe58993199a0da3baef6b6cf82074',
@@ -37,6 +45,7 @@ export const Layout = () => {
         'AMap.MapType',
         'AMap.GeoJSON',
         'AMap.ControlBar',
+        'AMap.MouseTool',
       ],
       Loca: {
         version: '2.0',
