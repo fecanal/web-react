@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 
 import '@amap/amap-jsapi-types';
 import AMapLoader from '@amap/amap-jsapi-loader';
-// import { ChartCard } from '@/components/ChartCard';
 
 import { Header } from '@/components/Header';
 import Menu from '@/components/Menu';
@@ -10,6 +9,7 @@ import './index.less';
 import { useTextMarker } from '../hooks/useTextMarker';
 import { useDingbian } from '../hooks/useDingbian';
 import { useControl } from '../hooks/useControl';
+import { ChartCard } from '@/components/ChartCard';
 export const Layout = () => {
   // 【使用script加载】
   // const [AMap] = useState<any>(window.AMap);
@@ -47,16 +47,13 @@ export const Layout = () => {
         setMap(new AMap.Map('map-container', mapOptions));
       })
       .then(() => {
-        console.log('loca loaded~');
+        // console.log('loca loaded~');
       });
   }, []);
   useEffect(() => {
     AMap && setMap(new AMap.Map('map-container', mapOptions));
   }, [AMap]);
 
-  // useEffect(() => {
-  //   if (!map|| typeof AMap.Scale !=='function') return;
-  // }, [map, AMap]);
   return (
     <div className="layout">
       {/* <div className="chart-card">

@@ -1,5 +1,7 @@
+import { useRequest } from '@/api/request';
 import { useEffect } from 'react';
 export const useControl = (map, AMap) => {
+  const { run } = useRequest('rain');
   useEffect(() => {
     if (!map || typeof AMap.Scale !== 'function') return;
     map.addControl(new AMap.Scale());
@@ -13,5 +15,8 @@ export const useControl = (map, AMap) => {
       })
     );
     map.addControl(new AMap.MapType());
+    run({}).then((res) => {
+      console.log({ res });
+    });
   }, [map, AMap]);
 };

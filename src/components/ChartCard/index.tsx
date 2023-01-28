@@ -27,6 +27,7 @@ export const ChartCard = () => {
       const myChart = echarts.init(chartRef.current) as unknown as ECharts;
       setEchartInstance(myChart);
       echartInstance?.setOption(option as any);
+      console.log('~~~');
     }
     // return () => {
     //   echartInstance?.dispose();
