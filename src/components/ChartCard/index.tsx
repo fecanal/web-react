@@ -4,7 +4,7 @@ import * as echarts from 'echarts';
 import { ECharts } from 'echarts';
 
 import './index.less';
-export const ChartCard = () => {
+export const ChartCard: React.FC = () => {
   const chartRef = useRef<HTMLDivElement>(null);
   const [echartInstance, setEchartInstance] = useState<ECharts>();
   const [option] = useState<any>({
@@ -27,7 +27,6 @@ export const ChartCard = () => {
       const myChart = echarts.init(chartRef.current) as unknown as ECharts;
       setEchartInstance(myChart);
       echartInstance?.setOption(option as any);
-      console.log('~~~');
     }
     // return () => {
     //   echartInstance?.dispose();

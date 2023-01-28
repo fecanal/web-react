@@ -6,13 +6,15 @@ import AMapLoader from '@amap/amap-jsapi-loader';
 import { Header } from '@/components/Header';
 import Menu from '@/components/Menu';
 import './index.less';
-import { useTextMarker } from '../hooks/useTextMarker';
-import { useDingbian } from '../hooks/useDingbian';
-import { useControl } from '../hooks/useControl';
+import { useTextMarker } from '../../hooks/useTextMarker';
+import { useDingbian } from '@/hooks/useDingbian';
+import { useControl } from '@/hooks/useControl';
 import { ChartCard } from '@/components/ChartCard';
-import { useClickMenu } from '../hooks/useClickMenu';
-import { usePolygon } from '../hooks/usePolygon';
-export const Layout = () => {
+import { useClickMenu } from '@/hooks/useClickMenu';
+import { usePolygon } from '@/hooks/usePolygon';
+import { ChartCards } from '@/components/ChartCards';
+import { ControlPanel } from '@/components/ControlPanel';
+export const Layout: React.FC = () => {
   // 【使用script加载】
   // const [AMap] = useState<any>(window.AMap);
   const [AMap, setAMap] = useState<any>();
@@ -65,9 +67,8 @@ export const Layout = () => {
 
   return (
     <div className="layout">
-      {/* <div className="chart-card">
-        <ChartCard />
-      </div> */}
+      <ControlPanel />
+      <ChartCards />
       <Header />
       <Menu />
       <div id="map"></div>
