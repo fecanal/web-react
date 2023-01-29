@@ -7,7 +7,7 @@ Header 左侧：弹窗 Modal
 - 用户
 - 设置：地图 Controler、用户手册
 
-左侧菜单
+地图四周菜单控件
 
 右侧：一些图表
 
@@ -37,4 +37,5 @@ Header 左侧：弹窗 Modal
 
 ## 快捷键：
 
-command+K：搜索
+ctrl/command+K：搜索
+ctrl+Z 专注模式，隐藏两侧图表和其他选择按钮

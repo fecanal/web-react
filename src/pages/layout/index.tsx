@@ -4,7 +4,7 @@ import '@amap/amap-jsapi-types';
 import AMapLoader from '@amap/amap-jsapi-loader';
 
 import { Header } from '@/components/Header';
-import Menu from '@/components/Menu';
+import LayerSelector from '@/components/LayerSelector';
 import './index.less';
 import { useTextMarker } from '../../hooks/useTextMarker';
 import { useDingbian } from '@/hooks/useDingbian';
@@ -70,7 +70,7 @@ export const Layout: React.FC = () => {
       <ControlPanel />
       <ChartCards />
       <Header />
-      <Menu />
+      <LayerSelector />
       <div id="map"></div>
       <div id="map-container" />
     </div>
