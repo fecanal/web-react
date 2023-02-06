@@ -4,16 +4,15 @@ import '@amap/amap-jsapi-types';
 import AMapLoader from '@amap/amap-jsapi-loader';
 
 import { Header } from '@/components/Header';
-import LayerSelector from '@/components/LayerSelector';
+import { LayerSelector } from '@/components/LayerSelector';
 import './index.less';
 import { useTextMarker } from '../../hooks/useTextMarker';
-import { useDingbian } from '@/hooks/useDingbian';
 import { useControl } from '@/hooks/useControl';
-import { ChartCard } from '@/components/ChartCard';
 import { useClickMenu } from '@/hooks/useClickMenu';
 import { usePolygon } from '@/hooks/usePolygon';
 import { ChartCards } from '@/components/ChartCards';
 import { ControlPanel } from '@/components/ControlPanel';
+import { useRequest } from '@/api/request';
 export const Layout: React.FC = () => {
   // 【使用script加载】
   // const [AMap] = useState<any>(window.AMap);
@@ -48,6 +47,7 @@ export const Layout: React.FC = () => {
         'AMap.GeoJSON',
         'AMap.ControlBar',
         'AMap.MouseTool',
+        'AMap.HeatMap',
       ],
       Loca: {
         version: '2.0',
@@ -61,8 +61,12 @@ export const Layout: React.FC = () => {
         // console.log('loca loaded~');
       });
   }, []);
+  const { run } = useRequest('rain');
   useEffect(() => {
     AMap && setMap(new AMap.Map('map-container', mapOptions));
+    run({}).then((res) => {
+      console.log({ res });
+    });
   }, [AMap]);
 
   return (
@@ -70,8 +74,7 @@ export const Layout: React.FC = () => {
       <ControlPanel />
       <ChartCards />
       <Header />
-      <LayerSelector />
-      <div id="map"></div>
+      <LayerSelector map={map} AMap={AMap} />
       <div id="map-container" />
     </div>
   );

@@ -2,8 +2,8 @@ import { useState } from 'react';
 import axios from 'axios';
 import { apiMap } from './index';
 const instance = axios.create({
-  baseURL:
-    'https://service-374y6w75-1308368140.sh.apigw.tencentcs.com/release/',
+  // baseURL:'https://service-374y6w75-1308368140.sh.apigw.tencentcs.com/release/',
+  baseURL: 'http://127.0.0.1:9000',
   method: 'post',
 });
 const request = (path: string, params = {}) => {

@@ -1,5 +1,5 @@
 export const apiMap = {
   rain: {
-    path: '/',
+    path: '/rain',
   },
 };

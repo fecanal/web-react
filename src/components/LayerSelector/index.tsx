@@ -1,17 +1,28 @@
-import React, { useRef, useState } from 'react';
-import {
-  Button,
-  Dropdown,
-  Link,
-  Menu,
-  Select,
-  Tag,
-  Typography,
-} from '@arco-design/web-react';
-import { IconApps, IconDesktop, IconDown } from '@arco-design/web-react/icon';
+import React, { useState } from 'react';
+import { Select, Tag } from '@arco-design/web-react';
 import './index.less';
-export default () => {
-  const options = ['水文信息', '气象信息', '土壤信息', '集雨窖信息'];
+import { useHeatMap } from './hooks/useHeatMap';
+export const LayerSelector = (props) => {
+  const { map, AMap } = props;
+  const layers = [
+    {
+      value: 'rain',
+      label: '雨水信息',
+    },
+    {
+      value: 'soil',
+      label: '土壤信息',
+    },
+    {
+      value: 'weather',
+      label: '天气信息',
+    },
+  ];
+  const [selectLayer, setSelectLayer] = useState<string[]>([]);
+  useHeatMap(map, AMap, selectLayer.includes('rain'));
+  const onLayerChange = (value) => {
+    setSelectLayer(value);
+  };
   return (
     <div className="layer-selector">
       <span className="layer-selector-title">图层：</span>
@@ -20,10 +31,9 @@ export default () => {
         style={{ width: 154 }}
         mode="multiple"
         renderTag={(props) => {
-          const { label, value, closable, onClose } = props;
+          const { label, closable, onClose } = props;
           return (
             <Tag
-              color={options.indexOf(value) > -1 ? value : 'gray'}
               closable={closable}
               onClose={onClose}
               style={{ margin: '2px 6px 2px 0' }}
@@ -32,10 +42,11 @@ export default () => {
             </Tag>
           );
         }}
+        onChange={onLayerChange}
       >
-        {options.map((option) => (
-          <Select.Option key={option} value={option}>
-            {option}
+        {layers.map(({ label, value }) => (
+          <Select.Option key={value} value={value}>
+            {label}
           </Select.Option>
         ))}
       </Select>
